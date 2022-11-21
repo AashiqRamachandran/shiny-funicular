@@ -3,7 +3,7 @@ FROM public.ecr.aws/lambda/python:3.8
 COPY . .
 
 # Setup golang in docker
-RUN yum update
+RUN yum -y update
 RUN yum -y install wget vi
 RUN yum -y install golang
 # Install git
