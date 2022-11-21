@@ -4,7 +4,7 @@ COPY . .
 
 # Setup golang in docker
 RUN yum -y update
-RUN yum -y install wget vi
+#RUN yum -y install wget vi
 RUN yum -y install golang
 # Install git
 RUN yum install -y git
