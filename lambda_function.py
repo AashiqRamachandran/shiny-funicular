@@ -6,12 +6,15 @@ def lambda_handler(event=None, context=None):
     body = event['body']
     body = json.loads(body)
     url = body['url']
-    # command = ["go", "version"]
-    command = ["subfinder", "-d", url, "-o", "output.json", "-oJ", "-nW"]
+    command = ["docker", "run","projectdiscovery/subfinder:latest",
+               "-d", url, ">>", "output.json"]
+               # "docker run projectdiscovery/subfinder:latest -d hackerone.com"]
+    # command = ["subfinder", "-d", url, "-o", "output.json", "-oJ", "-nW"]
     try:
         response = subprocess.run(command, stdout=subprocess.PIPE)
         print(response)
         with open('output.json') as f:
+            print(f.readlines())
             data = json.load(f)
             print(data)
             return {
