@@ -6,8 +6,8 @@ def lambda_handler(event=None, context=None):
     body = event['body']
     body = json.loads(body)
     url = body['url']
-    command = ["go", "version"]
-    # command = ["subfinder", "-d", url, "-o", "output.json", "-oJ", "-nW"]
+    # command = ["go", "version"]
+    command = ["subfinder", "-d", url, "-o", "output.json", "-oJ", "-nW"]
     try:
         response = subprocess.run(command, stdout=subprocess.PIPE)
         print(response)
