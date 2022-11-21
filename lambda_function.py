@@ -6,9 +6,9 @@ def lambda_handler(event=None, context=None):
     body = event['body']
     body = json.loads(body)
     url = body['url']
-    command = ["docker", "run","projectdiscovery/subfinder:latest",
+    command = ["docker", "run", "projectdiscovery/subfinder:latest",
                "-d", url, ">>", "output.json"]
-               # "docker run projectdiscovery/subfinder:latest -d hackerone.com"]
+    # "docker run projectdiscovery/subfinder:latest -d hackerone.com"]
     # command = ["subfinder", "-d", url, "-o", "output.json", "-oJ", "-nW"]
     try:
         response = subprocess.run(command, stdout=subprocess.PIPE)
@@ -27,6 +27,7 @@ def lambda_handler(event=None, context=None):
             'statusCode': 500,
             'body': json.dumps(str(e))
         }
+
 
 x = {
     "body": "{\"url\": \"httpx.me\"}",
