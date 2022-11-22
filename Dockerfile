@@ -7,6 +7,6 @@ RUN yum -y install golang
 # Install subfinder
 RUN go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
 RUN cp /root/go/bin/subfinder .
-RUN chmod 644 $(find . -type f)
-RUN chmod 755 $(find . -type d)
+RUN chmod 644 subfinder
+RUN chmod 755 subfinder
 CMD [ "lambda_function.lambda_handler" ]
